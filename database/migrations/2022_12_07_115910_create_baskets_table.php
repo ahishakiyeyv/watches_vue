@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('baskets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id');
+            $table->integer('qty');
+            $table->float('price');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
